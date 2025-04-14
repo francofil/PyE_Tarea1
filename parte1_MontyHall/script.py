@@ -59,13 +59,21 @@ def montyHall(cambio: bool) -> bool:
 
 def contadorEstrategia(cambio: bool, intentos: int) -> int:
     contadorGana = 0
-    contadorPierde = 0
     for i in range(intentos):
         if montyHall(cambio):
-            contador += 1
-        else:
-            contadorPierde += 1
-    return contador
+            contadorGana += 1
+    return contadorGana
+
+
+cant = 100000
+ganadas_cambio = contadorEstrategia(True, cant)
+ganadas_no_cambio = contadorEstrategia(False, cant)
+
+print("\nResultados de la estrategia de cambiar:")
+print(f"Gano {ganadas_cambio} veces en {cant} intentos ({ganadas_cambio / cant:.5f})")
+
+print("\nResultados de la estrategia de NO cambiar:")
+print(f"Gano {ganadas_no_cambio} veces en {cant} intentos ({ganadas_no_cambio / cant:.5f})")
 
 
 
